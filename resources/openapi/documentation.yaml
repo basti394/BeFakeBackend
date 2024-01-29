@@ -1,0 +1,8 @@
+openapi: "3.0.3"
+info:
+  title: "BeFakeBackend API"
+  description: "BeFakeBackend API"
+  version: "1.0.0"
+servers:
+- url: "https://BeFakeBackend"
+paths: {}
