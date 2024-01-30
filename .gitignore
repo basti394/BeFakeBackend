@@ -36,3 +36,5 @@ out/
 .vscode/
 
 /apps/
+
+/src/main/kotlin/pizza/xyz/secret/
