@@ -24,12 +24,12 @@ fun Application.configureRouting() {
         post("/upload") {
 
             var tokenString = ""
-            File("src/main/kotlin/pizza/xyz/secret/secret.json").forEachLine { line ->
+            File("/app/secret/secret.json").forEachLine { line ->
                 tokenString += line
             }
             val token = Json.decodeFromString<Token>(tokenString)
 
-            if (call.request.headers.get("Authorization") != token.token) {
+            if (call.request.headers["Authorization"] != token.token) {
                 call.respond(HttpStatusCode.Unauthorized, "Unauthorized")
                 return@post
             }

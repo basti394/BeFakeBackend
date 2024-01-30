@@ -37,4 +37,4 @@ out/
 
 /apps/
 
-/src/main/kotlin/pizza/xyz/secret/secret.json
+/app/secret/secret.json
