@@ -8,18 +8,31 @@ import io.ktor.server.request.*
 import io.ktor.server.resources.Resources
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import io.ktor.util.cio.*
-import io.ktor.utils.io.*
 import kotlinx.serialization.json.Json
+import pizza.xyz.data.Token
 import pizza.xyz.dto.App
-import pizza.xyz.dto.AppCreated
 import java.io.File
 import java.util.*
+
+fun main() {
+    println(UUID.randomUUID())
+}
 
 fun Application.configureRouting() {
     install(Resources)
     routing {
         post("/upload") {
+
+            var tokenString = ""
+            File("src/main/kotlin/pizza/xyz/secret/secret.json").forEachLine { line ->
+                tokenString += line
+            }
+            val token = Json.decodeFromString<Token>(tokenString)
+
+            if (call.request.headers.get("Authorization") != token.token) {
+                call.respond(HttpStatusCode.Unauthorized, "Unauthorized")
+                return@post
+            }
 
             val multipart = call.receiveMultipart()
             var app: App? = null

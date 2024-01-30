@@ -8,7 +8,7 @@ import io.ktor.server.auth.jwt.*
 import io.ktor.server.response.*
 
 fun Application.configureSecurity() {
-    /*authentication {
+    authentication {
         basic(name = "myauth1") {
             realm = "Ktor Server"
             validate { credentials ->
@@ -27,5 +27,5 @@ fun Application.configureSecurity() {
                 /**/
             }
         }
-    }*/
+    }
 }
