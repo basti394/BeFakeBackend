@@ -60,7 +60,7 @@ fun Application.configureRouting() {
                 val file = File(dir, appName)
                 file.createNewFile()
                 file.writeBytes(fileBytes)
-                call.respondText("File is uploaded")
+                call.respondText("File is uploaded to ${file.absolutePath}")
             }} ?: call.respond(HttpStatusCode.BadRequest, "Missing file or app data")
         }
         get("/apps/newest") {
